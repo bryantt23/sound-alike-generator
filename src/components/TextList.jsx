@@ -7,7 +7,7 @@ function TextList({ textList }) {
     }
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="textListContainer">
             {textList.map((textData) => <TextSoundAlike key={textData.key} textData={textData} />)}
         </div>
     )

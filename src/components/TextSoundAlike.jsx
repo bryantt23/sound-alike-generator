@@ -17,8 +17,13 @@ function TextSoundAlike({ textData }) {
     }, [showAll])
 
     return (
-        <div><p>{word}</p>
-            <button onClick={() => setShowAll(prev => !prev)}>Show {showAll ? "Less" : "More"}</button>
+        <div className="textSoundAlike">
+            <p><strong>{word}</strong></p>
+            <button className="showMoreToggle"
+                onClick={() => setShowAll(prev => !prev)}
+            >
+                Show {showAll ? "Less" : "More"}
+            </button>
 
             {wordList.map((word, index) => <p key={index}>{word.word}</p>)}
         </div>
