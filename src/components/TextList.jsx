@@ -2,7 +2,6 @@ import React from 'react'
 import TextSoundAlike from './TextSoundAlike'
 
 function TextList({ textList }) {
-    console.log("🚀 ~ TextList ~ textList:", textList)
     if (textList.length === 0) {
         return null
     }
