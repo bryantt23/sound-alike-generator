@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import TextInput from './components/TextInput'
-import { getSoundAlikeWords } from './services/textService'
+import { getSimilarSoundingWords } from './services/textService'
 import TextList from './components/TextList'
+import { generateRandomKey } from './utils/keyGenerator'
 
 
 function App() {
@@ -10,9 +11,9 @@ function App() {
   const handleSubmit = async (e, text) => {
     e.preventDefault()
     const wordList = []
-    for (const word of text.split(" ")) {
-      const soundAlike = await getSoundAlikeWords(word)
-      wordList.push({ word, soundAlike })
+    for (const word of text.trim().split(/\s+/)) {
+      const similarSoundingWords = await getSimilarSoundingWords(word)
+      wordList.push({ key: generateRandomKey(), word, similarSoundingWords })
     }
     setTextList(wordList)
   }
