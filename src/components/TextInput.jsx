@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { debounce } from 'lodash'
 
-function TextInput({ handleSubmit }) {
+function TextInput({ fetchSimilarSoundingWords }) {
     const [text, setText] = useState('mahina pa ang tagalog ko')
+    const debounceRef = useRef(debounce((t) => {
+        fetchSimilarSoundingWords(t)
+    }, 2000))
+
+    useEffect(() => {
+        debounceRef.current(text)
+    }, [text])
 
     return (
         <div>
-            <form onSubmit={(e) => handleSubmit(e, text)}>
-                <label htmlFor='inputText'>Enter text:</label>
-                <input
-                    type='text'
-                    id='inputText'
-                    value={text}
-                    onChange={e => setText(e.target.value)}
-                />
-                <button type='submit'>Submit</button>
-            </form>
+            <label htmlFor='inputText'>Enter text:</label>
+            <input
+                type='text'
+                id='inputText'
+                value={text}
+                onChange={e => setText(e.target.value)}
+            />
         </div>
     )
 }

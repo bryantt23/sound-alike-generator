@@ -8,8 +8,7 @@ import { generateRandomKey } from './utils/keyGenerator'
 
 function App() {
   const [textList, setTextList] = useState([])
-  const handleSubmit = async (e, text) => {
-    e.preventDefault()
+  const fetchSimilarSoundingWords = async (text) => {
     const wordList = []
     for (const word of text.trim().split(/\s+/)) {
       const similarSoundingWords = await getSimilarSoundingWords(word)
@@ -21,7 +20,7 @@ function App() {
   return (
     <>
       <h1>Sounds like</h1>
-      <TextInput handleSubmit={handleSubmit} />
+      <TextInput fetchSimilarSoundingWords={fetchSimilarSoundingWords} />
       <TextList textList={textList} />
     </>
   )
