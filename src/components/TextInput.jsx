@@ -5,7 +5,7 @@ function TextInput({ fetchSimilarSoundingWords }) {
     const [text, setText] = useState('mahina pa ang tagalog ko')
     const debounceRef = useRef(debounce((t) => {
         fetchSimilarSoundingWords(t)
-    }, 2000))
+    }, 1000))
 
     useEffect(() => {
         debounceRef.current(text)

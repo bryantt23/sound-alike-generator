@@ -7,8 +7,6 @@ function TextSoundAlike({ textData }) {
 
     useEffect(() => {
         if (showAll) {
-            console.log("🚀 ~ useEffect ~ similarSoundingWords:", similarSoundingWords)
-
             setWordList(similarSoundingWords)
         }
         else {
@@ -25,7 +23,11 @@ function TextSoundAlike({ textData }) {
                 Show {showAll ? "Less" : "More"}
             </button>
 
-            {wordList.map((word, index) => <p key={index}>{word.word}</p>)}
+            <div
+                onClick={() => setShowAll(prev => !prev)}
+            >
+                {wordList.map((word, index) => <p key={index}>{word.word}</p>)}
+            </div>
         </div>
     )
 }
