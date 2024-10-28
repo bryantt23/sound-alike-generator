@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 function TextSoundAlike({ textData }) {
     const { word, similarSoundingWords } = textData
-    const [showAll, setShowAll] = useState(false)
+    const [showAll, setShowAll] = useState(true)
     const [wordList, setWordList] = useState([])
 
     useEffect(() => {
